@@ -1,0 +1,22 @@
+{
+  "name": "bochure",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/geforcesong/bochure.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/geforcesong/bochure/issues"
+  },
+  "homepage": "https://github.com/geforcesong/bochure#readme",
+  "dependencies": {
+    "express": "^4.16.2"
+  }
+}
