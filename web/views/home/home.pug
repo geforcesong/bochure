@@ -3,10 +3,10 @@ extends ../common/layout.pug
 block header
   script(type='text/javascript').
       document.addEventListener("DOMContentLoaded", function(event) {
-        alert("DOMContentLoaded");
+        console.log("DOMContentLoaded");
       });
       window.onload = function(){
-        alert('hello');
+        console.log('hello');
       }
 
 
@@ -15,3 +15,4 @@ block content
   image(src='http://img12.yiihuu.com/860X860/upimg/courses/2016/06/28/1-1467121027-507481.jpg?auto=h' style="display:none;")
   h1 #{userName}
   h2 I am #{age} years old.
+  button(id="btnSave") Hello World
