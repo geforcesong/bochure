@@ -9,7 +9,7 @@ class HomeController extends BaseController {
 
     loadView(req: express.Request, res: express.Response, next?: express.NextFunction): void {
         this.initialize(req, res, next);
-        res.render('home/home.pug', { name: 'george', age: 30, youAreUsingPug: true });
+        res.render('home/home.pug', { name: 'Haha', age: 3, youAreUsingPug: true });
     }
 }
 

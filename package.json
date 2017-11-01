@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "start": "tsc && node ./dist/app.js",
-    "buildProduct": "tsc -p tsconfig.prod.json"
+    "buildProduct": "tsc -p tsconfig.prod.json",
+    "w": "tsc && webpack"
   },
   "repository": {
     "type": "git",
@@ -24,6 +25,7 @@
     "express": "^4.16.2",
     "lodash": "^4.17.3",
     "pug": "^2.0.0-rc.4",
-    "typescript": "^2.6.1"
+    "typescript": "^2.6.1",
+    "webpack": "^3.8.1"
   }
 }

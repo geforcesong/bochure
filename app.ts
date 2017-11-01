@@ -4,11 +4,13 @@ import SiteRouter from "./web/configuration/routes";
 
 class Server {
     app: any;
+
     constructor() {
         this.app = express();
-        new SiteRouter(this.app);
         this.app.set('views', path.join(__dirname, '..', 'web', 'views'));
         this.app.set('view engine', 'pug');
+        new SiteRouter(this.app);
+        this.app.use(express.static(path.join(__dirname, '..', 'public')));
     }
 
     run() {
