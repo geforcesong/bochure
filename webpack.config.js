@@ -1,13 +1,14 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const HtmlWebpackPugPlugin = require('html-webpack-pug-plugin');
-
+const Webpack = require('webpack');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 module.exports = {
     entry: {
         bundle: [
-            './dist/web/views/common/public/ts/main.js', './web/views/common/client/style/main.scss'
+            './dist/web/views/common/public/ts/main.js',
+            './web/views/common/client/style/main.scss'
         ]
     },
     output: {
