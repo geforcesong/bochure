@@ -1,5 +1,3 @@
-import * as $ from "jquery";
-
 class HomeController {
     constructor() {
         $('#btnSave').click(()=>{

@@ -7,6 +7,7 @@ const ExtractTextPlugin = require('extract-text-webpack-plugin');
 module.exports = {
     entry: {
         bundle: [
+            './node_modules/bootstrap/dist/js/bootstrap.js',
             './dist/web/views/common/public/ts/main.js',
             './web/views/common/client/style/main.scss'
         ]
@@ -34,6 +35,12 @@ module.exports = {
             filename: '../web/views/common/layout.pug',
             filetype: 'pug'
         }),
-        new HtmlWebpackPugPlugin()
+        new HtmlWebpackPugPlugin(),
+        new Webpack.ProvidePlugin({
+            jQuery: 'jquery',
+            $: 'jquery',
+            jquery: 'jquery',
+            Popper: 'popper.js'
+        })
     ]
 };
