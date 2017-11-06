@@ -1,11 +1,12 @@
 import iController from '../interfaces/controller.interface';
+import BaseModel from '../models/base/BaseModel';
 import * as express from "express";
 
 class BaseController implements iController {
     req: express.Request;
     res: express.Response;
     next: express.NextFunction;
-    
+
     loadView(req: express.Request, res: express.Response, next?: express.NextFunction): void {
         throw new Error("Not implemented");
     }
@@ -31,6 +32,12 @@ class BaseController implements iController {
                 Location: url
             });
             this.res.end();
+        }
+    }
+
+    renderPage(url: string, model: BaseModel) {
+        if (!this.res.headersSent) {
+            this.res.render(url, model);
         }
     }
 }

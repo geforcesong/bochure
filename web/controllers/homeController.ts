@@ -11,7 +11,7 @@ class HomeController extends BaseController {
     loadView(req: express.Request, res: express.Response, next?: express.NextFunction): void {
         this.initialize(req, res, next);
         const homeModel: HomeModel = new HomeModel();
-        res.render('home/home.pug', {pageType:'homepage111'});
+        this.renderPage('home/home.pug', homeModel);
     }
 }
 
