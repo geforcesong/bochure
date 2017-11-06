@@ -36,9 +36,16 @@ class BaseController implements iController {
     }
 
     renderPage(url: string, model: BaseModel) {
-        if (!this.res.headersSent) {
-            this.res.render(url, model);
+        if (this.res.headersSent) {
+            return;
         }
+        this.res.render(url, model, (err, html)=>{
+            if (err) {
+                console.log(err);
+                return this.res.sendStatus(500);
+            }
+            return this.res.send(html);
+        });
     }
 }
 
