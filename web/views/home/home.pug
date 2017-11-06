@@ -1,6 +1,18 @@
 extends ../common/layout.pug
 
 block header
-å
+  script(type='text/javascript').
+      document.addEventListener("DOMContentLoaded", function(event) {
+        console.log("DOMContentLoaded");
+      });
+      window.onload = function(){
+        console.log('hello');
+      }
+
+
 block content
-  
+  - const userName = `Hello ${name}!`
+  image(src='http://img12.yiihuu.com/860X860/upimg/courses/2016/06/28/1-1467121027-507481.jpg?auto=h' style="display:none;")
+  h1 #{userName}
+  h2 I am #{pageType} years old.
+  button(id="btnSave") Hello World

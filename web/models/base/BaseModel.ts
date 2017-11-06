@@ -1,5 +1,7 @@
 class BaseModel {
-    constructor(){
+    pageType: string;
+    constructor(pageType: string) {
+        this.pageType = pageType;
     }
 }
 

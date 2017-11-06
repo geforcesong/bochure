@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "tsc && webpack && node ./dist/app.js",
+    "dev": "tsc && webpack && node ./dist/app.js",
+    "start": "node ./dist/app.js",
     "buildProduct": "tsc -p tsconfig.prod.json",
     "build": "tsc && webpack"
   },
