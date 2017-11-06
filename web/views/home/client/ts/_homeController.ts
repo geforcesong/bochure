@@ -1,12 +1,21 @@
+import * as _ from 'lodash';
+
 class HomeController {
+    cars: Array<number>;
+
     constructor() {
-        $('#btnSave').click(()=>{
+        this.cars = [1, 2, 3, 4, 5];
+        $('#btnSave').click(() => {
             this.bing();
         })
     }
 
     bing() {
-        alert('bing');
+        alert('bing gogog ');
+        let d = _.find(this.cars, (d) => {
+            return d > 2;
+        });
+        alert(d);
     }
 }
 

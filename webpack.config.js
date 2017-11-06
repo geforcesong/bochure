@@ -8,7 +8,7 @@ module.exports = {
     entry: {
         bundle: [
             './node_modules/bootstrap/dist/js/bootstrap.js',
-            './dist/web/views/common/public/ts/main.js',
+            './dist/web/views/common/client/ts/main.js',
             './web/views/common/client/style/main.scss'
         ]
     },
@@ -39,7 +39,6 @@ module.exports = {
         new Webpack.ProvidePlugin({
             jQuery: 'jquery',
             $: 'jquery',
-            jquery: 'jquery',
             Popper: 'popper.js'
         })
     ]
