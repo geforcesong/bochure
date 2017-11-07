@@ -8,7 +8,7 @@ module.exports = {
     entry: {
         bundle: [
             './node_modules/bootstrap/dist/js/bootstrap.js',
-            './dist/web/views/common/client/ts/main.js',
+            './dist/web/views/common/client/ts/_main.js',
             './web/views/common/client/style/main.scss'
         ]
     },
