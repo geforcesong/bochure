@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "webpack --watch",
+    "dev": "concurrently \"tsc -w\" \"webpack --watch\" \"node ./dist/app.js\" ",
     "make": "tsc && webpack && node ./dist/app.js",
     "start": "node ./dist/app.js",
     "buildProduct": "tsc -p tsconfig.prod.json",
@@ -35,6 +35,7 @@
   },
   "devDependencies": {
     "@types/jquery": "^3.2.16",
+    "concurrently": "^3.5.0",
     "css-loader": "^0.28.7",
     "extract-text-webpack-plugin": "^3.0.2",
     "html-webpack-plugin": "^2.30.1",
