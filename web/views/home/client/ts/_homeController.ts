@@ -11,7 +11,7 @@ class HomeController {
     }
 
     bing() {
-        alert('bing gogog ');
+        alert('bing gogog laljkslkfjlsk');
         let d = _.find(this.cars, (d) => {
             return d > 2;
         });
