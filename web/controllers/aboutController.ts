@@ -1,5 +1,6 @@
 import BaseController from "../controllers/baseController";
 import * as express from "express";
+import AboutModel from '../models/about/AboutModel';
 
 class AboutController extends BaseController {
     constructor(){
@@ -8,12 +9,8 @@ class AboutController extends BaseController {
 
     loadView(req: express.Request, res: express.Response, next?: express.NextFunction): void {
         this.initialize(req, res, next);
-        res.render('about/about.ejs');
-    }
-
-    loadOtherView(req: express.Request, res: express.Response, next?: express.NextFunction): void {
-        this.initialize(req, res, next);
-        res.render('about/aboutOther.ejs');
+        const aboutModel: AboutModel = new AboutModel();
+        this.renderPage('about/about.pug', aboutModel);
     }
 }
 
