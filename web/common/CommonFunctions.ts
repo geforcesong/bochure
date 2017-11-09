@@ -1,6 +1,5 @@
 import * as express from "express";
 import * as MobileDetect from "mobile-detect";
-import { Stream } from "stream";
 
 class CommonFunctions {
     public static checkIsBrowser(req: express.Request): boolean {
@@ -47,3 +46,5 @@ class CommonFunctions {
         return browser;
     }
 }
+
+export default CommonFunctions;
