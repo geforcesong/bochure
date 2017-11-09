@@ -10,14 +10,7 @@ class CommonFunctions {
     }
 
     public static getUserAgent(req: express.Request): string {
-        let ua: string = req && req.headers ? req.headers['user-agent'][0] : '';
-        if (req && req.headers) {
-            if (req.headers['user-agent'].length) {
-                ua = req.headers['user-agent'][0];
-            } else {
-                ua = <string>req.headers['user-agent'];
-            }
-        }
+        let ua: string = req && req.headers ? <string>req.headers['user-agent'] : '';
         return ua.toLowerCase();
     }
 
