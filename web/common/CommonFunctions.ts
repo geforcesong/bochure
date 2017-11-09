@@ -35,14 +35,14 @@ class CommonFunctions {
     public static getBrowserInfo(req: express.Request): Object {
         const ua = CommonFunctions.getUserAgent(req);
         const md = new MobileDetect(ua);
-
         const browser = {
             isMobile: md ? !!md.mobile() : false,
             isTablet: md ? !!md.tablet() : false,
             isPhone: md ? !!md.phone() : false,
             userAgent: ua,
             isUserBrowser: CommonFunctions.checkIsBrowser(req),
-            refererUrl: (req && req.headers && req.headers.referer) ? req.headers.referer : ''
+            refererUrl: (req && req.headers && req.headers.referer) ? req.headers.referer : '',
+            ip: CommonFunctions.getClientIPAddress(req)
         }
         return browser;
     }
