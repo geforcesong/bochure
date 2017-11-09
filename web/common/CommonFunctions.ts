@@ -39,6 +39,7 @@ class CommonFunctions {
             isTablet: md ? !!md.tablet() : false,
             isPhone: md ? !!md.phone() : false,
             userAgent: ua,
+            requestUrl: req.url,
             isUserBrowser: CommonFunctions.checkIsBrowser(req),
             refererUrl: (req && req.headers && req.headers.referer) ? req.headers.referer : '',
             ip: CommonFunctions.getClientIPAddress(req)

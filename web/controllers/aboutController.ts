@@ -8,7 +8,7 @@ class AboutController extends BaseController {
     }
 
     loadView(req: express.Request, res: express.Response, next?: express.NextFunction): void {
-        this.initialize(req, res, next);
+        const options = this.initialize(req, res, next);
         const aboutModel: AboutModel = new AboutModel();
         this.renderPage('about/about.pug', aboutModel);
     }

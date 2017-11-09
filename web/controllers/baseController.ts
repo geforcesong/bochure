@@ -1,5 +1,6 @@
 import iController from '../interfaces/controller.interface';
 import BaseModel from '../models/base/BaseModel';
+import CommonFunctions from '../common/CommonFunctions'
 import * as express from "express";
 
 class BaseController implements iController {
@@ -11,10 +12,14 @@ class BaseController implements iController {
         throw new Error("Not implemented");
     }
 
-    initialize(req: express.Request, res: express.Response, next?: express.NextFunction) {
+    initialize(req: express.Request, res: express.Response, next?: express.NextFunction): BaseOptions {
         this.req = req;
         this.res = res;
         this.next = next;
+        const browser = CommonFunctions.getBrowserInfo(req);
+        return {
+            browser: browser
+        }
     }
 
     redirect301(url: string) {
@@ -39,7 +44,7 @@ class BaseController implements iController {
         if (this.res.headersSent) {
             return;
         }
-        this.res.render(url, model, (err, html)=>{
+        this.res.render(url, model, (err, html) => {
             if (err) {
                 console.log(err);
                 return this.res.sendStatus(500);
