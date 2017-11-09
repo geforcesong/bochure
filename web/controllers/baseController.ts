@@ -9,7 +9,7 @@ class BaseController implements iController {
     next: express.NextFunction;
 
     loadView(req: express.Request, res: express.Response, next?: express.NextFunction): void {
-        throw new Error("Not implemented");
+        throw new Error("loadView is NOT implemented");
     }
 
     initialize(req: express.Request, res: express.Response, next?: express.NextFunction): BaseOptions {
