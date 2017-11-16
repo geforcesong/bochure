@@ -1,4 +1,18 @@
 extends ../common/layout.pug
 
 block content
-    p this is about page.
+    div(id='app')
+        p {{ message }}
+        p {{ reversedMessage }}
+        p(v-if="seen" :class="classObj") this is about page.
+        button(@click="reverseMessage") reverse
+        br
+        ol
+            todo-item(v-for="(item, index) in groceryList" v-bind:todo="item" v-bind:key="item.id" v-on:remove="groceryList.splice(index, 1)")
+
+        template(v-if="loginType === 'username'")
+            label UserName:
+            input(placeholder="Enter your username" key="username-input")
+        template(v-else)
+            label Email:
+            input(placeholder="Enter your email address" class="abc" key="email-input")
