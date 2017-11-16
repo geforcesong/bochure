@@ -1,5 +1,9 @@
 import HomeController from '../../../home/client/ts/_homeController';
 import AboutController from '../../../about/client/ts/_aboutController';
 
-let homeController = new HomeController();
-let aboutController = new AboutController();
+const pageType: string = $('body').attr('pageType');
+if (pageType === 'HomePage') {
+    let homeController = new HomeController();
+} else if (pageType === 'AboutPage') {
+    let aboutController = new AboutController();
+}
