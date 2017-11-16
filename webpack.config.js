@@ -32,7 +32,8 @@ module.exports = {
                         loader: 'sass-loader'
                     }]
                 })
-            }
+            },
+            { test: require.resolve("jquery"), loader: "expose-loader?$!expose-loader?jQuery" }
         ]
     },
     resolve: {
