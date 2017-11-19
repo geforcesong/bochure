@@ -21,8 +21,13 @@ module.exports = {
         rules: [
             {
                 test: /\.vue$/,
-                exclude: /node_modules/,
-                loader: 'vue-loader'
+                loader: 'vue-loader',
+                options: {
+                    loaders: {
+                        ts: 'ts-loader'
+                    },
+                    esModule: true
+                }
             },
             {
                 test: /\.scss$/,

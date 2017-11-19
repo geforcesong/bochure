@@ -1,7 +1,13 @@
 <template>
-  <div>This is a simple component</div> 
+  <div>This is a simple component. {{msg}}</div> 
 </template>
 
-<script>
-export default {};
+<script lang='ts'>
+export default {
+  data() {
+    return {
+      msg: "you"
+    }
+  }
+}
 </script>
