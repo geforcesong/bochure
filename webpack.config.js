@@ -38,7 +38,10 @@ module.exports = {
                     }]
                 })
             },
-            { test: require.resolve("jquery"), loader: "expose-loader?$!expose-loader?jQuery" }
+            {
+                test: require.resolve('jquery'),
+                loader: 'expose-loader?$!expose-loader?jQuery'
+            }
         ]
     },
     resolve: {
