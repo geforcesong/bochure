@@ -2,6 +2,7 @@ extends ../common/layout.pug
 
 block content
     div(id='app')
+        my-component
         p {{ message }}
         p {{ reversedMessage }}
         p(v-if="seen" :class="classObj") this is about page.
