@@ -4,11 +4,11 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "concurrently \"tsc -w\" \"webpack --watch\" \"node ./dist/app.js\" ",
-    "make": "tsc && webpack && node ./dist/app.js",
+    "dev": "concurrently \"tsc -w\" \"webpack --config compile/webpack.config.js --watch\" \"node ./dist/app.js\" ",
+    "make": "tsc && webpack --config compile/webpack.config.js && node ./dist/app.js",
     "start": "node ./dist/app.js",
-    "release": "tsc -p tsconfig.prod.json && webpack --config webpack.config.production.js",
-    "build": "tsc && webpack"
+    "release": "tsc -p tsconfig.prod.json && webpack --config compile/webpack.config.production.js",
+    "build": "tsc && webpack --config compile/webpack.config.js"
   },
   "repository": {
     "type": "git",
@@ -50,6 +50,7 @@
     "extract-text-webpack-plugin": "^3.0.2",
     "node-sass": "^4.5.3",
     "sass-loader": "^6.0.6",
-    "style-loader": "^0.19.0"
+    "style-loader": "^0.19.0",
+    "webpack-merge": "^4.1.1"
   }
 }
