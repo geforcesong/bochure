@@ -1,6 +1,5 @@
-import * as _ from 'lodash';
 import Vue from 'vue';
-import mycomp from './components/mycomponent.vue';
+import HelloComponent from './components/Hello.vue';
 
 class AboutController {
     app: Vue;
@@ -8,7 +7,7 @@ class AboutController {
         this.app = new Vue({
             el: '#app',
             components: {
-                'my-component': mycomp
+                HelloComponent
             },
             data: {
                 message: 'Hello Vue!' + new Date().toLocaleString(),
@@ -17,5 +16,7 @@ class AboutController {
         })
     }
 }
+
+var a = new AboutController();
 
 export default AboutController;

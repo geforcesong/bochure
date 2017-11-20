@@ -10,7 +10,8 @@ module.exports = {
             './node_modules/bootstrap/dist/js/bootstrap.js',
             './dist/web/views/common/client/ts/_main.js',
             './web/views/common/client/style/main.scss'
-        ]
+        ],
+        about: './web/views/about/client/ts/_aboutController.ts'
     },
     output: {
         path: path.resolve(__dirname, 'public'),
@@ -24,9 +25,17 @@ module.exports = {
                 loader: 'vue-loader',
                 options: {
                     loaders: {
-                        ts: 'ts-loader'
-                    },
-                    esModule: true
+                        scss: 'vue-style-loader!css-loader!sass-loader',
+                        sass: 'vue-style-loader!css-loader!sass-loader?indentedSyntax'
+                    }
+                }
+            },
+            {
+                test: /\.tsx?$/,
+                loader: 'ts-loader',
+                exclude: /node_modules/,
+                options: {
+                    appendTsSuffixTo: [/\.vue$/]
                 }
             },
             {
@@ -55,11 +64,18 @@ module.exports = {
         }
     },
     plugins: [
+        new Webpack.optimize.CommonsChunkPlugin({ name: 'common' }),
+        new Webpack.optimize.CommonsChunkPlugin({ name: 'bundle', chunks: ['bundle'] }),
         new ExtractTextPlugin('styles.css'),
         new HtmlWebpackPlugin({
             template: './web/views/common/_layout.pug',
             filename: '../web/views/common/layout.pug',
-            filetype: 'pug'
+            filetype: 'pug',
+            inject: true,
+            chunks: [
+                'common', // 0
+                'bundle' // 1
+            ]
         }),
         new HtmlWebpackPugPlugin(),
         new Webpack.ProvidePlugin({

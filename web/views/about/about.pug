@@ -2,5 +2,8 @@ extends ../common/layout.pug
 
 block content
     div(id='app')
-        my-component
+        hello-component
         p {{ message }}
+
+block footerScripts
+    script(type="text/javascript" src="/about.js")
