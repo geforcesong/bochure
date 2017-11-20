@@ -3,10 +3,13 @@ html(lang='en')
   head
     title= pageTitle
     meta(name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no')
+    link(type='text/css' rel='stylesheet' href=`/styles.${version}.css`)
     block header
     block headerScripts
   body(pageType=pageType)
     include includes/nav.pug
     block content
     block footer
+    script(type="text/javascript" src=`/common.${version}.js`)
+    script(type="text/javascript" src=`/bundle.${version}.js`)
     block footerScripts

@@ -1,8 +1,10 @@
 const path = require('path');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
-const HtmlWebpackPugPlugin = require('html-webpack-pug-plugin');
+// const HtmlWebpackPlugin = require('html-webpack-plugin');
+// const HtmlWebpackPugPlugin = require('html-webpack-pug-plugin');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 const Webpack = require('webpack');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const pkg = require('./package.json');
 
 module.exports = {
     entry: {
@@ -15,7 +17,7 @@ module.exports = {
     },
     output: {
         path: path.resolve(__dirname, 'public'),
-        filename: '[name].js',
+        filename: `[name].${pkg.version}.js`,
         publicPath: '/'
     },
     module: {
@@ -64,20 +66,24 @@ module.exports = {
         }
     },
     plugins: [
+        new CopyWebpackPlugin([{
+            from: './package.json',
+            to: path.resolve(__dirname, 'dist')
+        }], { copyUnmodified: true }),
         new Webpack.optimize.CommonsChunkPlugin({ name: 'common' }),
         new Webpack.optimize.CommonsChunkPlugin({ name: 'bundle', chunks: ['bundle'] }),
-        new ExtractTextPlugin('styles.css'),
-        new HtmlWebpackPlugin({
-            template: './web/views/common/_layout.pug',
-            filename: '../web/views/common/layout.pug',
-            filetype: 'pug',
-            inject: true,
-            chunks: [
-                'common', // 0
-                'bundle' // 1
-            ]
-        }),
-        new HtmlWebpackPugPlugin(),
+        new ExtractTextPlugin(`styles.${pkg.version}.css`),
+        // new HtmlWebpackPlugin({
+        //     template: './web/views/common/_layout.pug',
+        //     filename: '../web/views/common/layout.pug',
+        //     filetype: 'pug',
+        //     inject: true,
+        //     chunks: [
+        //         'common', // 0
+        //         'bundle' // 1
+        //     ]
+        // }),
+        // new HtmlWebpackPugPlugin(),
         new Webpack.ProvidePlugin({
             jQuery: 'jquery',
             $: 'jquery',

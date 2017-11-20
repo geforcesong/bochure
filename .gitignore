@@ -5,4 +5,3 @@ dist
 npm-debug.log
 public/*.js
 public/*.css
-web/views/common/layout.pug
