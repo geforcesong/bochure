@@ -3,13 +3,16 @@ extends ../common/layout.pug
 block content
     div(id='app')
         hello-component(v-bind:message="message")
-        p(v-if='seen') {{ message }}
         input(v-model='message')
         br
         br
         div total num is {{total}}
         br
+        buttoncounter(v-on:increment="incrementTotal") iscomming
         buttoncounter(v-on:increment="incrementTotal")
-        buttoncounter(v-on:increment="incrementTotal")
+            h1(slot="redSlot") red
+        br
+        br
+        currencyinput
 block footerScripts
     script(type="text/javascript" src=`/about.${version}.js`)

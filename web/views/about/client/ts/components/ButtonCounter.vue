@@ -2,6 +2,9 @@
   div this is a pug template
     br
     button(v-on:click='incrementCounter') {{counter}}
+    slot 只有在没有要分发的内容时才会显示。
+    div(class="divRed")
+        slot(name="redSlot")
 </template>
 
 <script lang="ts">
@@ -21,3 +24,9 @@ export default Vue.extend({
   }
 });
 </script>
+
+<style>
+    .divRed {
+        color:blue;
+    }
+</style>
