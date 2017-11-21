@@ -1,5 +1,6 @@
 import Vue from 'vue';
 import HelloComponent from './components/Hello.vue';
+import ButtonCounter from './components/ButtonCounter.vue';
 
 class AboutController {
     app: Vue;
@@ -7,11 +8,18 @@ class AboutController {
         this.app = new Vue({
             el: '#app',
             components: {
-                HelloComponent
+                'hello-component': HelloComponent,
+                'buttoncounter': ButtonCounter
             },
             data: {
                 message: 'Hello Vue!' + new Date().toLocaleString(),
-                seen: true
+                seen: true,
+                total: 0
+            },
+            methods: {
+                incrementTotal: function () {
+                    this.total += 1
+                }
             }
         })
     }

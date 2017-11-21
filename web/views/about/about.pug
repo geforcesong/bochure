@@ -2,8 +2,14 @@ extends ../common/layout.pug
 
 block content
     div(id='app')
-        hello-component
-        p {{ message }}
-
+        hello-component(v-bind:message="message")
+        p(v-if='seen') {{ message }}
+        input(v-model='message')
+        br
+        br
+        div total num is {{total}}
+        br
+        buttoncounter(v-on:increment="incrementTotal")
+        buttoncounter(v-on:increment="incrementTotal")
 block footerScripts
     script(type="text/javascript" src=`/about.${version}.js`)
