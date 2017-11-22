@@ -3,6 +3,7 @@ import HelloComponent from './components/Hello.vue';
 import ButtonCounter from './components/ButtonCounter.vue';
 import CurrencyInput from './components/CurrencyInput.vue';
 import ListControl from './components/ListControl.vue';
+import ListSelection from './components/ListSelection.vue';
 
 class AboutController {
     app: Vue;
@@ -13,7 +14,8 @@ class AboutController {
                 'hello-component': HelloComponent,
                 'buttoncounter': ButtonCounter,
                 'currencyinput': CurrencyInput,
-                'listcontrol': ListControl
+                'listcontrol': ListControl,
+                'listselection':ListSelection
             },
             data: {
                 message: 'Hello Vue!' + new Date().toLocaleString(),

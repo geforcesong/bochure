@@ -13,6 +13,8 @@
 
 <script lang="ts">
 import Vue from "vue";
+import EventBus from "../_eventBus";
+
 export default Vue.extend({
   data() {
     return {
@@ -31,7 +33,8 @@ export default Vue.extend({
       this.inputTextContent = "";
     },
     go: function() {
-      alert(this.selected.join(";"));
+      let val = this.selected.join(";");
+      EventBus.$emit('SELECTION_CONFIRMED', val);
     }
   },
   mounted() {

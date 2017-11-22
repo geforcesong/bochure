@@ -60,6 +60,7 @@ module.exports = function (isDev) {
             ]
         },
         resolve: {
+            extensions: ['.ts', '.tsx', '.js'],
             alias: {
                 vue$: 'vue/dist/vue.esm.js'
             }
