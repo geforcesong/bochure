@@ -9,16 +9,18 @@ import iController from "../interfaces/controller.interface"
 
 class SiteRouter {
     constructor(app: any) {
-        this.setRoute(app, '/', new HomeController());
-        this.setRoute(app, '/about', new AboutController());
-        this.setRoute(app, '/api/user/get', new ApiController());
+        const getMethod = app.get.bind(app);
+        const postMethod = app.post.bind(app);
+        this.setRoute(getMethod, '/', new HomeController());
+        this.setRoute(getMethod, '/about', new AboutController());
+        this.setRoute(getMethod, '/api/user/get', new ApiController());
     }
 
-    setRoute(app: any, path: any, controller: iController, controllerName?:string) {
+    setRoute(method: any, path: any, controller: iController, controllerName?:string) {
         if(!controllerName){
-            app.get(path, controller.loadView.bind(controller));
+            method(path, controller.loadView.bind(controller));
         } else{
-            app.get(path, (<any>controller)[controllerName].bind(controller));
+            method(path, (<any>controller)[controllerName].bind(controller));
         }
     }
 }
