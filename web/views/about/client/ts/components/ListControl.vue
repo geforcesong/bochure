@@ -34,7 +34,21 @@ export default Vue.extend({
       alert(this.selected.join(";"));
     }
   },
-  mounted(){
+  mounted() {
+    const uri = "/api/user/get";
+    const self = this;
+    $.ajax({ url: uri })
+      .done(d => {
+        for(let v of d.list){
+            self.items.push({
+                text: v.name,
+                value: v.age
+            });
+        }
+      })
+      .fail(err => {
+        alert(err);
+      });
   }
 });
 </script>
