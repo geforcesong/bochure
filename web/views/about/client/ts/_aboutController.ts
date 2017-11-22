@@ -2,6 +2,7 @@ import Vue from 'vue';
 import HelloComponent from './components/Hello.vue';
 import ButtonCounter from './components/ButtonCounter.vue';
 import CurrencyInput from './components/CurrencyInput.vue';
+import ListControl from './components/ListControl.vue';
 
 class AboutController {
     app: Vue;
@@ -11,7 +12,8 @@ class AboutController {
             components: {
                 'hello-component': HelloComponent,
                 'buttoncounter': ButtonCounter,
-                'currencyinput':CurrencyInput
+                'currencyinput': CurrencyInput,
+                'listcontrol': ListControl
             },
             data: {
                 message: 'Hello Vue!' + new Date().toLocaleString(),
