@@ -33,6 +33,8 @@ export default Vue.extend({
     go: function() {
       alert(this.selected.join(";"));
     }
+  },
+  mounted(){
   }
 });
 </script>
