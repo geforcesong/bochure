@@ -52,6 +52,13 @@ class BaseController implements iController {
             return this.res.send(html);
         });
     }
+
+    sendJson(model: Object) {
+        if (this.res.headersSent) {
+            return;
+        }
+        return this.res.json(model);
+    }
 }
 
 export default BaseController;
