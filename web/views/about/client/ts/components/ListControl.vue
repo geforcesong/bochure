@@ -8,7 +8,7 @@ div
     transition(name="fade")
         span(v-if="show") Selected: {{ selected }}
     br
-    button(v-on:click="go" v-annoying-background='red') Confirm
+    button(v-on:click="go" v-annoying-background="red") Confirm
 </template>
 
 <script lang="ts">
@@ -34,8 +34,7 @@ export default Vue.extend({
       items: [],
       test: "abc",
       selected: [],
-      show: true,
-      red: ""
+      show: true
     };
   },
   directives: {
