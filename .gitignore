@@ -2,6 +2,7 @@ node_modules
 dist
 .vscode
 .DS_Store
+*.map
 npm-debug.log
 public/*.js
 public/*.css
