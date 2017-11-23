@@ -8,7 +8,7 @@ div
     transition(name="fade")
         span(v-if="show") Selected: {{ selected }}
     br
-    button(v-on:click="go" v-annoying-background="red") Confirm
+    button(v-on:click="go" v-annoying-background='red') Confirm
 </template>
 
 <script lang="ts">
@@ -35,16 +35,13 @@ export default Vue.extend({
       test: "abc",
       selected: [],
       show: true,
-      mcolor: 'blue'
+      red: ""
     };
   },
   directives: {
     "annoying-background": {
       inserted(el: HTMLElement, binding: any, vnode: any) {
-        const color = binding.expression || "blue";
-        if (el) {
-          el.style.backgroundColor = color;
-        }
+        el.style.backgroundColor = binding.expression || "pink";
       }
     }
   },
