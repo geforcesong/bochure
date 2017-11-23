@@ -8,6 +8,7 @@ import ListSelection from './components/ListSelection.vue';
 class AboutController {
     app: Vue;
     constructor() {
+        
         this.app = new Vue({
             el: '#app',
             components: {
@@ -15,7 +16,7 @@ class AboutController {
                 'buttoncounter': ButtonCounter,
                 'currencyinput': CurrencyInput,
                 'listcontrol': ListControl,
-                'listselection':ListSelection
+                'listselection': ListSelection
             },
             data: {
                 message: 'Hello Vue!' + new Date().toLocaleString(),

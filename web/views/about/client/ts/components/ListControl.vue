@@ -1,28 +1,52 @@
 <template lang="pug">
-<div>
+div
     input(v-on:keyup.enter="add($event.target.value);" type="text" v-model="inputTextContent")
     br
     select(multiple v-model="selected")
         option(v-for="option in items" v-bind:value="option.value") {{ option.text }}
     br
-    span Selected: {{ selected }}
+    transition(name="fade")
+        span(v-if="show") Selected: {{ selected }}
     br
-    button(v-on:click="go") Confirm
-</div>
+    button(v-on:click="go" v-annoying-background="red") Confirm
 </template>
 
 <script lang="ts">
 import Vue from "vue";
 import EventBus from "../_eventBus";
 
+var myMixin = {
+  created: function() {
+    this.hello();
+  },
+  methods: {
+    hello: function() {
+      console.log("hello from mixin!");
+    }
+  }
+};
+
 export default Vue.extend({
+  mixins: [myMixin],
   data() {
     return {
       inputTextContent: "haha1",
       items: [],
       test: "abc",
-      selected: []
+      selected: [],
+      show: true,
+      mcolor: 'blue'
     };
+  },
+  directives: {
+    "annoying-background": {
+      inserted(el: HTMLElement, binding: any, vnode: any) {
+        const color = binding.expression || "blue";
+        if (el) {
+          el.style.backgroundColor = color;
+        }
+      }
+    }
   },
   methods: {
     add: function(value: string) {
@@ -34,7 +58,9 @@ export default Vue.extend({
     },
     go: function() {
       let val = this.selected.join(";");
-      EventBus.$emit('SELECTION_CONFIRMED', val);
+      this.show = !this.show;
+      this.hello();
+      EventBus.$emit("SELECTION_CONFIRMED", val);
     }
   },
   mounted() {
@@ -42,11 +68,11 @@ export default Vue.extend({
     const self = this;
     $.ajax({ url: uri })
       .done(d => {
-        for(let v of d.list){
-            self.items.push({
-                text: v.name,
-                value: v.age
-            });
+        for (let v of d.list) {
+          self.items.push({
+            text: v.name,
+            value: v.age
+          });
         }
       })
       .fail(err => {
@@ -60,5 +86,13 @@ export default Vue.extend({
 select {
   width: 200px;
   height: 250px;
+}
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.5s;
+}
+.fade-enter,
+.fade-leave-to {
+  opacity: 0;
 }
 </style>
