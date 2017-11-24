@@ -1,5 +1,6 @@
 const styles = require('../style/home.scss');
 import * as _ from 'lodash';
+import "bootstrap";
 
 class HomeController {
     cars: Array<number>;

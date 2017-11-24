@@ -35,6 +35,11 @@ module.exports = {
         extensions: ['.tsx', '.ts', '.js']
     },
     plugins: [
-        new ExtractTextPlugin('styles.css')
+        new ExtractTextPlugin('styles.css'),
+        new Webpack.ProvidePlugin({
+            jQuery: 'jquery',
+            $: 'jquery',
+            Popper: 'popper.js'
+        })
     ]
 };
