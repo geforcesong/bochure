@@ -1,13 +1,16 @@
 {
     "include": [
-        "web/**/*",
+        "web/**/*.ts",
         "app.ts",
         "typing.d.ts"
     ],
+    "exclude": [
+        "web/views/**/*"
+    ],
     "compilerOptions": {
         "noImplicitAny": true,
-        "target": "es5",
-        "outDir": "dist",
+        "target": "es6",
+        "rootDir": ".",
         "module": "commonjs",
         "sourceMap": true
     }

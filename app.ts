@@ -7,10 +7,10 @@ class Server {
 
     constructor() {
         this.app = express();
-        this.app.set('views', path.join(__dirname, '..', 'web', 'views'));
+        this.app.set('views', path.join(__dirname, 'web', 'views'));
         this.app.set('view engine', 'pug');
         new SiteRouter(this.app);
-        this.app.use(express.static(path.join(__dirname, '..', 'public')));
+        this.app.use(express.static(path.join(__dirname, 'public')));
     }
 
     run() {
