@@ -7,46 +7,34 @@ const ExtractTextPlugin = require('extract-text-webpack-plugin');
 module.exports = {
     entry: {
         home: [
-            './node_modules/bootstrap/dist/js/bootstrap.js',
-            './dist/web/views/common/client/ts/_main.js',
-            './web/views/common/client/style/main.scss'
+            './web/views/home/client/ts/_homeController.ts'
         ]
     },
     output: {
-        path: path.resolve(__dirname, 'public'),
+        path: path.resolve(__dirname, '..', 'public'),
         filename: '[name].js',
         publicPath: '/'
     },
     module: {
         rules: [
             {
+                test: /\.tsx?$/,
+                use: 'ts-loader',
+                exclude: /node_modules/
+            },
+            {
                 test: /\.scss$/,
                 use: ExtractTextPlugin.extract({
                     fallback: 'style-loader',
-                    use: [{
-                        loader: 'css-loader',
-                        options: {
-                            minimize: false
-                        }
-                    }, {
-                        loader: 'sass-loader'
-                    }]
+                    use: ['css-loader', 'sass-loader']
                 })
             }
         ]
     },
+    resolve: {
+        extensions: ['.tsx', '.ts', '.js']
+    },
     plugins: [
-        new ExtractTextPlugin('styles.css'),
-        new HtmlWebpackPlugin({
-            template: './web/views/common/_layout.pug',
-            filename: '../web/views/common/layout.pug',
-            filetype: 'pug'
-        }),
-        new HtmlWebpackPugPlugin(),
-        new Webpack.ProvidePlugin({
-            jQuery: 'jquery',
-            $: 'jquery',
-            Popper: 'popper.js'
-        })
+        new ExtractTextPlugin('styles.css')
     ]
 };

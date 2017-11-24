@@ -1,3 +1,4 @@
+const styles = require('../style/home.scss');
 import * as _ from 'lodash';
 
 class HomeController {

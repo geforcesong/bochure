@@ -1,5 +1,8 @@
 extends ../common/layout.pug
 
+block footerScripts
+    script(type="text/javascript" src="/home.js")
+
 block content
     div(class=`pageBody ${pageType}` id='btnSave')
         div(class='row')
