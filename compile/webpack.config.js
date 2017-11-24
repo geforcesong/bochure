@@ -6,9 +6,7 @@ const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 module.exports = {
     entry: {
-        home: [
-            './web/views/home/client/ts/_homeController.ts'
-        ]
+        home: './web/views/home/client/ts/_homeController.ts'
     },
     output: {
         path: path.resolve(__dirname, '..', 'public'),
