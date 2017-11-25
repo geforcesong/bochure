@@ -6,6 +6,7 @@ class HomeController {
     cars: Array<number>;
 
     constructor() {
+        alert('hello')
         this.cars = [1, 2, 3, 4, 5];
         $('#btnSave').click(() => {
             this.bing();

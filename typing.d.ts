@@ -1,3 +1,8 @@
 declare class BaseOptions {
-    browser : object
+    browser: object
+}
+
+declare module "*.json" {
+    const value: any;
+    export default value;
 }

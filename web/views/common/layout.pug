@@ -3,7 +3,7 @@ html(lang='en')
   head
     title= pageTitle
     meta(name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no')
-    link(href="/styles.css" rel="stylesheet")
+    link(href=`${server.cdnUrl}styles.${version}.css` rel="stylesheet")
     block header
     block headerScripts
   body

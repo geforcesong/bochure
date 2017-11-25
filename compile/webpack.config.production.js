@@ -1,53 +1,18 @@
-const path = require('path');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
-const HtmlWebpackPugPlugin = require('html-webpack-pug-plugin');
-const Webpack = require('webpack');
-const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const webpack = require('webpack');
+const merge = require('webpack-merge');
+const base = require('./webpack.config.base.js');
 
-module.exports = {
-    entry: {
-        bundle: [
-            './node_modules/bootstrap/dist/js/bootstrap.js',
-            './dist/web/views/common/client/ts/_main.js',
-            './web/views/common/client/style/main.scss'
-        ]
-    },
-    output: {
-        path: path.resolve(__dirname, 'public'),
-        filename: '[name].js',
-        publicPath: '/'
-    },
-    module: {
-        rules: [
-            {
-                test: /\.scss$/,
-                use: ExtractTextPlugin.extract({
-                    fallback: 'style-loader',
-                    use: [{
-                        loader: 'css-loader',
-                        options: {
-                            minimize: true
-                        }
-                    }, {
-                        loader: 'sass-loader'
-                    }]
-                })
-            }
-        ]
-    },
+module.exports = merge(base(false), {
     plugins: [
-        new Webpack.optimize.UglifyJsPlugin(),
-        new ExtractTextPlugin('styles.css'),
-        new HtmlWebpackPlugin({
-            template: './web/views/common/_layout.pug',
-            filename: '../web/views/common/layout.pug',
-            filetype: 'pug'
+        new webpack.DefinePlugin({
+            'process.env': {
+                NODE_ENV: '"production"'
+            }
         }),
-        new HtmlWebpackPugPlugin(),
-        new Webpack.ProvidePlugin({
-            jQuery: 'jquery',
-            $: 'jquery',
-            Popper: 'popper.js'
+        new webpack.optimize.UglifyJsPlugin({
+            compress: {
+                warnings: false
+            }
         })
     ]
-};
+});
