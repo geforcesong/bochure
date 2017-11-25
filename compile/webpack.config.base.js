@@ -8,6 +8,9 @@ module.exports = function (isDev) {
         entry: {
             home: [
                 './web/views/home/client/ts/_homeController.ts'
+            ],
+            about: [
+                './web/views/about/client/ts/_aboutController.ts'
             ]
         },
         output: {

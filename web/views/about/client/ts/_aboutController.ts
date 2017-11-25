@@ -1,4 +1,5 @@
-import * as _ from 'lodash';
+const styles = require('../style/about.scss');
+import "bootstrap";
 
 class AboutController {
     constructor() {
