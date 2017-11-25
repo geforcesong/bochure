@@ -51,6 +51,9 @@ module.exports = function (isDev) {
             }),
             new Webpack.HotModuleReplacementPlugin(),
             new Webpack.NamedModulesPlugin(),
+            new Webpack.optimize.CommonsChunkPlugin({
+                name: 'vendor'
+            }),
             new Webpack.ProvidePlugin({
                 jQuery: 'jquery',
                 $: 'jquery',
