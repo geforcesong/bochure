@@ -6,3 +6,6 @@ npm-debug.log
 public/*.js
 public/*.css
 *.map
+public/*.css
+web/**/*.js
+app.js
