@@ -1,4 +1,10 @@
-import Formatter from './common/Formatter';
+import DB from './database/mongo/mongoManager';
 
-var a = 10000;
-console.log(Formatter.formatNumberWithComma(a));
+const db = new DB();
+
+async function name() {
+    const cdb = await db.connect();
+    console.log(cdb);
+};
+
+name();

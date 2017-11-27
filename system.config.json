@@ -4,5 +4,8 @@
         "appUrl": "http://localhost:3000/",
         "devServerUrl": "http://localhost:9000/",
         "devServerPort": 9000
+    },
+    "database": {
+        "mongoConnectionString": "mongodb://gsuper:movoto123@localhost:27017/Stuff"
     }
 }
