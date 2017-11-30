@@ -3,6 +3,53 @@ extends ../common/layout.pug
 block footerScripts
     script(type="text/javascript" src=`${server.cdnUrl}about.${version}.js`)
 
+block headerScripts
+    script.
+        document.addEventListener("DOMContentLoaded", function(event) {
+            performance.mark('domLoadFired');
+            for(var i=0;i<900000;i++);
+            performance.mark('domLoadFiredEnd');
+            console.log(`pfnow:${performance.now()}`);
+            console.log(`gettime:${new Date().getTime()}`);
+        });
+
+        window.onload = function(){
+            setTimeout(function(){ 
+                console.log(logPerf());
+                console.log(`domLoadFiredMark:${performance.getEntriesByName('domLoadFired')[0].startTime}`);
+                console.log(`domLoadFiredEndMark:${performance.getEntriesByName('domLoadFiredEnd')[0].startTime}`);
+                console.log(`domContentLoadedEventStart: ${performance.timing.domContentLoadedEventStart}`);
+                console.log(`domContentLoadedEventEnd: ${performance.timing.domContentLoadedEventEnd}`);
+            }, 3000);
+        }
+
+        function logPerf(){
+            var keys = ['navigationStart', 'unloadEventStart', 'unloadEventEnd', 'redirectStart', 'redirectEnd', 'fetchStart', 'domainLookupStart', 'domainLookupEnd', 'connectStart', 'connectEnd', 'secureConnectionStart', 'requestStart', 'responseStart', 'responseEnd', 'domLoading', 'domInteractive', 'domContentLoadedEventStart', 'domContentLoadedEventEnd', 'domComplete', 'loadEventStart', 'loadEventEnd'];
+
+            var timings = [];
+            var startTime = performance.timing['navigationStart'];
+            for (var key of keys) {
+                let time = performance.timing[key];
+                let elapse = 0;
+                if (time) {
+                    elapse = time - startTime;
+                }
+                var item = {
+                    value: time,
+                    key: key,
+                    elapse: `${elapse} ms`
+                }
+                if (item.key === 'responseStart') {
+                    item.comment = 'TTFB is here';
+                }
+                timings.push(item);
+            }
+
+            return timings.sort((a, b) => {
+                return a.value - b.value
+            })
+        }
+
 block content
     div(class=`pageBody ${pageType}`)
         h1 this is about page.
