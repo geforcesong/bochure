@@ -1,17 +1,17 @@
-@import '../../../common/client/style/main.scss';
-
-.pageBody{
+.HomePage{
     margin: 0;
     padding: 0;
-    background-color: yellow;
-};
+    background-color: gray;
 
-.topCarousel{
-    padding: 0;
-    margin: 0;
-    &>div{
+    .topCarousel{
         padding: 0;
         margin: 0;
-    }
+        &>div{
+            padding: 0;
+            margin: 0;
+        }
+    };
 };
+
+
 

@@ -1,4 +1,3 @@
-const styles = require('../style/about.scss');
 import "bootstrap";
 
 class AboutController {

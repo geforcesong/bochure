@@ -6,11 +6,12 @@ const pkg = require('../package.json');
 module.exports = function (isDev) {
     return {
         entry: {
-            home: [
-                './web/views/home/client/ts/_homeController.ts'
-            ],
             about: [
                 './web/views/about/client/ts/_aboutController.ts'
+            ],
+            home: [
+                './web/views/home/client/ts/_homeController.ts',
+                './web/views/common/client/style/main.scss'
             ]
         },
         output: {
@@ -47,7 +48,8 @@ module.exports = function (isDev) {
         plugins: [
             new ExtractTextPlugin({
                 filename: `styles.${pkg.version}.css`,
-                disable: false
+                disable: false,
+                allChunks: true
             }),
             new Webpack.HotModuleReplacementPlugin(),
             new Webpack.NamedModulesPlugin(),
