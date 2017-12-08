@@ -12,6 +12,9 @@ module.exports = function (isDev) {
             home: [
                 './web/views/home/client/ts/_homeController.ts',
                 './web/views/common/client/style/main.scss'
+            ],
+            admin: [
+                './web/views/admin/client/ts/_adminController.ts'
             ]
         },
         output: {

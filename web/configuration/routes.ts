@@ -4,12 +4,14 @@ import * as express from "express";
 import Validator from "../common/validator";
 import HomeController from "../controllers/homeController";
 import AboutController from "../controllers/aboutController";
+import AdminController from "../controllers/adminController";
 import iController from "../interfaces/controller.interface"
 
 class SiteRouter {
     constructor(app: any) {
         this.setRoute(app, '/', new HomeController());
         this.setRoute(app, '/about', new AboutController());
+        this.setRoute(app, '/admin', new AdminController());
     }
 
     setRoute(app: any, path: any, controller: iController, controllerName?:string) {
