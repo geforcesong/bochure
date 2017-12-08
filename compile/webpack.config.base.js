@@ -14,7 +14,8 @@ module.exports = function (isDev) {
                 './web/views/common/client/style/main.scss'
             ],
             admin: [
-                './web/views/admin/client/ts/_adminController.ts'
+                './web/views/admin/client/ts/_adminController.ts',
+                './web/views/admin/client/style/admin.scss'
             ]
         },
         output: {
@@ -50,7 +51,7 @@ module.exports = function (isDev) {
         },
         plugins: [
             new ExtractTextPlugin({
-                filename: `styles.${pkg.version}.css`,
+                filename: `styles.[name].${pkg.version}.css`,
                 disable: false,
                 allChunks: true
             }),
